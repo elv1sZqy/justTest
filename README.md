@@ -1,2 +1,2 @@
 # justTest
-java学习的练习代码
+学习JAVA的练习DEMO

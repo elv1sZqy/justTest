@@ -1,4 +1,4 @@
-﻿package com.tsu.zqy.File;
+package com.tsu.zqy.File;
 
 import java.io.File;
 

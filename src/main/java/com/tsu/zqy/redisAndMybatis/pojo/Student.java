@@ -1,12 +1,17 @@
 package com.tsu.zqy.redisAndMybatis.pojo;
 
+import java.io.Serializable;
+
 /**
  * @ClassName Student
  * @Author Elv1s
  * @Date 2019/5/20 9:07
  * @Description:
  */
-public class Student {
+public class Student implements Serializable {
+
+    private static final long serialVersionUID = 5960284624222728918L;
+
     private int sid;
     private String name;
     private String password;

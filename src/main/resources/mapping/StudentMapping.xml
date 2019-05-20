@@ -16,4 +16,12 @@
             resultType="com.tsu.zqy.redisAndMybatis.pojo.Student">
         select * from student where sid= #{id}
     </select>
+    <select id="getStudents"
+            resultType="com.tsu.zqy.redisAndMybatis.pojo.Student">
+        select * from student
+    </select>
+    <select id="getStudentsByTid" parameterType="int"
+            resultType="com.tsu.zqy.redisAndMybatis.pojo.Student">
+        select * from student where tid = #{tid}
+    </select>
 </mapper>

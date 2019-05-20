@@ -47,3 +47,4 @@ Thumbs.db
 # *.properties
 # pom.xml
 # mybaties-*.xml
+**/mybatis-config.xml

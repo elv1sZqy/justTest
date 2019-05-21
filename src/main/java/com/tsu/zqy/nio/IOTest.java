@@ -25,27 +25,30 @@ public class IOTest {
         System.out.println("开始接客");
 
         while (true){
-            pool.execute(() ->{
-                try {
-                    //获取客户端套接字.
-                    Socket socket = serverSocket.accept();
-                    System.out.println("来了一个新客人");
+            pool.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        //获取客户端套接字.
+                        Socket socket = serverSocket.accept();
+                        System.out.println("来了一个新客人");
 
-                    InputStream inputStream = socket.getInputStream();
+                        InputStream inputStream = socket.getInputStream();
 
-                    byte[] bytes = new byte[1024];
-                    while(true) {
-                        int read = inputStream.read(bytes);
-                        if (read != -1) {
-                            String str = new String(bytes, 0, read, "GBK");
-                            System.out.println(str);
-                        } else {
-                            System.out.println("客人走了");
-                            break;
+                        byte[] bytes = new byte[1024];
+                        while (true) {
+                            int read = inputStream.read(bytes);
+                            if (read != -1) {
+                                String str = new String(bytes, 0, read, "GBK");
+                                System.out.println(str);
+                            } else {
+                                System.out.println("客人走了");
+                                break;
+                            }
                         }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
             });
 

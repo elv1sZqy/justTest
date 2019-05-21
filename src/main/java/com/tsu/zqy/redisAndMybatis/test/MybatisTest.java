@@ -18,9 +18,7 @@ public class MybatisTest {
 
     @Test
     public void test1(){
-        try {
-
-            SqlSession session = SessionUtil.getSession();
+        try( SqlSession session = SessionUtil.getSession()) {
 
             //通过id查单个
             Student student = session.selectOne("Student.getStudentByid", 1);

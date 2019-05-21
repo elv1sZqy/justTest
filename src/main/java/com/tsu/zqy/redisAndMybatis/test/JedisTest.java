@@ -1,6 +1,8 @@
 package com.tsu.zqy.redisAndMybatis.test;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
+import com.tsu.zqy.redisAndMybatis.pojo.Student;
 import com.tsu.zqy.redisAndMybatis.util.JedisUtil;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
@@ -32,6 +34,11 @@ public class JedisTest {
         jedis.set("jedis", "hello world");
         System.out.println(jedis.get("jedis"));
 
+        Student student = new Student();
+        student.setName("zhangsan");
+        student.setPassword("1111");
+        jedis.set("Student_1", JSON.toJSONString(student));
+
         System.out.println("--------list--------------");
         //清空list    end < start
         jedis.ltrim("jedisList", 1, 0);
@@ -57,6 +64,7 @@ public class JedisTest {
         System.out.println(jedis.hget("hash", "2"));
         System.out.println(jedis.hgetAll("hash"));
 
+        jedis.close();
     }
 
     @Test
@@ -84,6 +92,7 @@ public class JedisTest {
         //前两名
         System.out.println(jedis.zrangeByScore("zset", 0, 2));
 
+        jedis.close();
     }
 
 }

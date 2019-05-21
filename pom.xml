@@ -51,7 +51,21 @@
         <!--jedis-->
 
         <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
         <!--lombok-->
+
+        <!--fastJson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.29</version>
+        </dependency>
+        <!--fastJson-->
 
     </dependencies>
 

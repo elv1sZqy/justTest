@@ -123,9 +123,8 @@ public class CacheTest {
         String key = new StringBuffer("Student_").append(student.getSid()).toString();
 
         try (SqlSession session = SessionUtil.getSession()) {
-
+            
             int delete = session.delete("Student.delStudent", student);
-
             //删除成功
             if (1 == delete) {
                 jedis.del(key);

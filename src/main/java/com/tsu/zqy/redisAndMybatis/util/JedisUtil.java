@@ -14,10 +14,10 @@ public class JedisUtil {
     public static Jedis getJedis(){
 
         //地址加端口
-        Jedis jedis = new Jedis("119.23.208.159", 6379);
+        Jedis jedis = new Jedis("youraddress”, 6379);
 
         //密码
-        jedis.auth("nihao");
+        jedis.auth("your password");
 
         //连接
         jedis.connect();

@@ -114,6 +114,10 @@ public class CacheTest {
         jedis.close();
     }
 
+    /**
+     * 删除学生
+     * @param student
+     */
     public static void delStudent(Student student) {
         Jedis jedis = JedisUtil.getJedis();
         String key = new StringBuffer("Student_").append(student.getSid()).toString();

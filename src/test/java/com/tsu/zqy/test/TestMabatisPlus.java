@@ -43,6 +43,7 @@ public class TestMabatisPlus {
 
             QueryWrapper<Student> select1 = studentQueryWrapper.select("*");
             List<Student> studentList1 = studentMapper.selectList(select1);
+            //转成json
             System.out.println(JSON.toJSONString(studentList1));
         }
 

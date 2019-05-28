@@ -51,3 +51,4 @@ Thumbs.db
 
 /src/main/resources/MyBatis-config.xml
 /src/main/java/com/tsu/zqy/redisAndMybatis/util/JedisUtil.java
+/src/main/resources/application.yml

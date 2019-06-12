@@ -31,8 +31,6 @@ Thumbs.db
 *.iws
 .mymetadata
 .checkstyle
-.classpath
-.project
 .class
 .war
 .zip
@@ -43,10 +41,6 @@ Thumbs.db
 /target/*
 /src/main/webapp/WEB-INF/classes/*
 /src/main/webapp/userfiles/*
-/target/
-# *.properties
-# pom.xml
-# mybaties-*.xml
 
 
 /src/main/resources/MyBatis-config.xml

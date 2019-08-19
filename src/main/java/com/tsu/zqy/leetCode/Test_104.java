@@ -28,16 +28,17 @@ package com.tsu.zqy.leetCode;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Test_104 {
-    int right = 0;
-    int left = 0;
 
     public int maxDepth(TreeNode root) {
-
-        if (root == null){
-            return right;
-        }
-
-        return right > left ? right : left;
+       return root == null ? 0 : 1 + Math.max(maxDepth(root.left),maxDepth(root.right));
     }
-
+    /*
+    // 递归的方式, 时间超时
+    public int maxDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        return maxDepth(root.left) > maxDepth(root.right) ? maxDepth(root.left) + 1 : maxDepth(root.right) + 1;
+    }
+    */
 }

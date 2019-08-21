@@ -1,6 +1,8 @@
 package com.tsu.zqy.leetCode;
 
 
+import com.tsu.zqy.leetCode.wrapper.TreeNode;
+
 /**
  * @ClassName Test_100
  * @Author Elv1s
@@ -61,18 +63,6 @@ public class Test_100 {
             return false;
         }
         return isSameTree(p.right, q.right) && isSameTree(p.left, q.left);
-
     }
 
-
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
 }

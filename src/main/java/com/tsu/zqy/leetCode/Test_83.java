@@ -1,5 +1,6 @@
 package com.tsu.zqy.leetCode;
 
+import com.tsu.zqy.leetCode.wrapper.ListNode;
 import jdk.nashorn.internal.ir.LiteralNode;
 
 /**
@@ -24,25 +25,8 @@ import jdk.nashorn.internal.ir.LiteralNode;
 public class Test_83 {
 
     public static void main(String[] args) {
-        ListNode listNode = new ListNode(1);
-        ListNode listNode2 = new ListNode(1);
-        ListNode listNode3 = new ListNode(2);
-        ListNode listNode4 = new ListNode(3);
-        ListNode listNode5 = new ListNode(3);
-        listNode.setNext(listNode2);
-        listNode2.setNext(listNode3);
-        listNode3.setNext(listNode4);
-        listNode4.setNext(listNode5);
-        listNode5.setNext(null);
-        ListNode listNode1 = deleteDuplicates(listNode);
-
-        while (listNode1.next != null){
-            System.out.println(listNode1.val);
-            listNode1 = listNode1.next;
-        }
 
     }
-
 
     public static ListNode deleteDuplicates(ListNode head) {
         // 为空的情况
@@ -73,20 +57,6 @@ public class Test_83 {
 
         return head;
     }
-
-
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-
-    public void setNext(ListNode next){
-        this.next = next;
-    }
-}
 

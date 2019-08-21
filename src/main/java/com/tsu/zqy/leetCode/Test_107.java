@@ -1,6 +1,7 @@
 package com.tsu.zqy.leetCode;
 
 import com.tsu.zqy.Linked.Node;
+import com.tsu.zqy.leetCode.wrapper.TreeNode;
 import org.junit.Test;
 
 import java.util.ArrayList;

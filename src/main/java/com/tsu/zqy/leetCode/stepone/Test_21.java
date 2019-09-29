@@ -1,5 +1,7 @@
 package com.tsu.zqy.leetCode.stepone;
 
+import com.tsu.zqy.leetCode.wrapper.ListNode;
+
 import java.util.ArrayList;
 
 public class Test_21 {
@@ -59,13 +61,4 @@ public class Test_21 {
         return currentNode;
     }
 
-    private static ListNode getNext(ListNode l1) {
-        return l1.next;
-    }
-
-    public static class ListNode {
-         int val;
-         ListNode next;
-         ListNode(int x) { val = x; }
-  }
 }

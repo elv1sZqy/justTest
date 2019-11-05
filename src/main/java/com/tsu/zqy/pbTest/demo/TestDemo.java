@@ -1,5 +1,6 @@
 package com.tsu.zqy.pbTest.demo;
 
+import com.alibaba.fastjson.JSON;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.tsu.zqy.pbTest.javaEntry.StudentByJ;
 import com.tsu.zqy.pbTest.pbEntry.Student;
@@ -47,11 +48,13 @@ public class TestDemo {
         studentByJ.setId(1);
         studentByJ.setName("tom");
         studentByJ.setState(1);
-
         byte[] bytes = serializeForJ(studentByJ);
         System.out.println("字节数组长度:" + bytes.length);
 
-
+        String s = JSON.toJSONString(studentByJ);
+        byte[] bytesByJson = s.getBytes();
+        System.out.println("字节数组长度:" + bytesByJson.length);
+        System.out.println("字节数组长度:" + s);
     }
 
 

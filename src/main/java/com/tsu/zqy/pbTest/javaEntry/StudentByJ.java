@@ -44,4 +44,14 @@ public class StudentByJ implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "StudentByJ{" +
+                "age=" + age +
+                ", id=" + id +
+                ", state=" + state +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -2311,6 +2311,7 @@ public abstract class CodedOutputStream extends ByteOutput {
         int delta = (int) (position - originalPos);
         totalBytesWritten += delta;
       } else {
+        //  核心
         while (true) {
           if ((value & ~0x7F) == 0) {
             buffer[position++] = (byte) value;
@@ -2359,7 +2360,7 @@ public abstract class CodedOutputStream extends ByteOutput {
     }
 
     public static void main(String[] args) {
-      int value = 129;
+      int value = 11;
       int position = 0;
       byte[] buffer = new byte[4];
       buffer[position++] = (byte) (value & 0xFF);

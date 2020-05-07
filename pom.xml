@@ -117,8 +117,102 @@
             <version>3.9.1</version>
         </dependency>
         <!--pb-->
-    </dependencies>
 
+        <!--html2pic-->
+        <dependency>
+            <groupId>gui.ava</groupId>
+            <artifactId>html2image</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.cobraparser</groupId>
+            <artifactId>Cobra</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <!--html2pic-->
+       <!-- <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>DJNativeSwing-SWT</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>DJNativeSwing</artifactId>
+            <version>1.0.0</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>core-renderer</artifactId>
+            <version>R8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.cssbox</groupId>
+            <artifactId>cssbox</artifactId>
+            <version>4.14</version>
+        </dependency>
+
+
+       <!-- <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>core-renderer</artifactId>
+            <version>R8</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>DJNativeSwing-SWT</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>DJNativeSwing</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>net.sf.cssbox</groupId>
+            <artifactId>cssbox</artifactId>
+            <version>4.14</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>com.github.jarlakxen</groupId>
+            <artifactId>embedphantomjs</artifactId>
+            <version>3.0</version>
+        </dependency>
+
+
+       <!-- &lt;!&ndash;phantomjs &ndash;&gt;
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+
+        &lt;!&ndash; https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver &ndash;&gt;
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.4.4</version>
+        </dependency>-->
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>yoava</id>
+            <name>AOL yoava</name>
+            <url>http://yoava.artifactoryonline.com/yoava/repo</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>

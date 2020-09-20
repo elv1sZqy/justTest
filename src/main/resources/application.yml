@@ -1,0 +1,12 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/analyze?useUnicode=true&amp;characterEncoding=UTF-8
+    username: root
+    password: root
+
+mybatis-plus:
+
+  configuration:
+    map-underscore-to-camel-case: true # 驼峰命名

@@ -31,6 +31,20 @@ public class Test_404 {
     }
 
     public int sumOfLeftLeaves(TreeNode root) {
+        return getSumOfLeftLeaves(root, false);
+    }
+
+    private int getSumOfLeftLeaves(TreeNode root, boolean isLeft) {
+        if (null == root) {
+            return 0;
+        }
+        if (root.right == null && root.left == null && isLeft) {
+            return root.val;
+        }
+        return getSumOfLeftLeaves(root.right, false) + getSumOfLeftLeaves(root.left, true);
+    }
+
+   /* public int sumOfLeftLeaves(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -39,7 +53,7 @@ public class Test_404 {
         }
         return fun(root);
 
-    }
+    }*/
 
     private int fun(TreeNode root) {
         if (root == null) {
@@ -56,4 +70,5 @@ public class Test_404 {
         int i1 = fun(root.right);
         return i + i1;
     }
+
 }

@@ -1,4 +1,4 @@
-package com.tsu.zqy.leetCode;
+package com.tsu.zqy.leetCode.stepone;
 
 /**
  * @ClassName Test_121

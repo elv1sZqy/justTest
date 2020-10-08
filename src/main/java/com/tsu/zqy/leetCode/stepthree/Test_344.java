@@ -1,7 +1,5 @@
 package com.tsu.zqy.leetCode.stepthree;
 
-import org.junit.Test;
-
 /**
  * @author zhuQiYun
  * @create 2019/11/5
@@ -27,11 +25,22 @@ import org.junit.Test;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Test_344 {
-    public void reverseString(char[] s) {
+    public void reverseString2(char[] s) {
         for (int i = 0; i < s.length / 2; i++) {
             char c = s[i];
             s[i] = s[s.length - 1 - i];
             s[s.length - 1 - i] = c;
+        }
+    }
+
+    public void reverseString(char[] s) {
+        int left = 0 , right = s.length -1;
+        while (left < right){
+            char c = s[left];
+            s[left] = s[right];
+            s[right] = c;
+            left++;
+            right--;
         }
     }
 }

@@ -1,36 +1,68 @@
 package com.tsu.zqy.leetCode.stepone;
 
 import com.tsu.zqy.leetCode.wrapper.TreeNode;
+import com.tsu.zqy.leetCode.wrapper.TreeNodeWrapper;
 
 /**
- * @ClassName Test_110
- * @Author Elv1s
- * @Date 2020/10/5 10:10
- * @Description:
+ * @author zhuQiYun
+ * @create 2020/9/30
+ * @description :给定一个二叉树，判断它是否是高度平衡的二叉树。
+ * <p>
+ * 本题中，一棵高度平衡二叉树定义为：
+ * <p>
+ * 一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。
  */
 public class Test_110 {
-    class Solution {
+    /**
+     * 思路 :  入参就是一个二叉树, 只需要判断就行..
+     * 暴力法就是计算两边的最深的层数查出来, 然后做一个计算. 看差值是不是大于一
+     */
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        TreeNode treeNode = TreeNodeWrapper.stringToTreeNode("[1,2,3,4,5,null,6,7]");
+        System.out.println(solution.isBalanced(treeNode));
+    }
+
+    static class Solution {
         public boolean isBalanced(TreeNode root) {
-            // 树的深度一定大于等于0
-            return height(root) >= 0;
+            if (null == root) {
+                return true;
+            }
+
+            int rightDeepFloor = getDeepFloor(root.right, 1);
+            int leftDeepFloor = getDeepFloor(root.left, 1);
+            if (rightDeepFloor < 0 || leftDeepFloor < 0) {
+                return false;
+            }
+            return Math.abs(rightDeepFloor - leftDeepFloor) < 2;
         }
 
-        public int height(TreeNode root) {
-            // 当不存在子节点的时候 就返回0
-            if (root == null) {
-                return 0;
+        private int getDeepFloor(TreeNode root, int floot) {
+            if (root == null || floot < 0) {
+                return floot;
             }
-            // 计算左子树深度
-            int leftHeight = height(root.left);
-            // 计算右子树深度
-            int rightHeight = height(root.right);
-            // 如果子树存在不平衡, 那么整棵树都不平衡   或者, 两棵子树的高度差大于1
-            if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
+            TreeNode right = root.right;
+            TreeNode left = root.left;
+            if (right == null && left == null) {
+                return floot;
+            }
+            int rightFloot = 0;
+            int leftFloot = 0;
+            int nextFloot = ++floot;
+
+            if (right != null) {
+                rightFloot = getDeepFloor(right, nextFloot);
+            }
+
+            if (left != null) {
+                leftFloot = getDeepFloor(left, nextFloot);
+            }
+
+            if (Math.min(leftFloot, rightFloot) < 0 || Math.abs(rightFloot - leftFloot) > 1) {
                 return -1;
-            } else {
-                // 如果任然是平衡的, 那就深度加一
-                return Math.max(leftHeight, rightHeight) + 1;
             }
+            return Math.max(leftFloot, rightFloot);
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.tsu.zqy.leetCode.stepone;
 
+import org.junit.Test;
+
 /**
  * @ClassName Test_121
  * @Author Elv1s
@@ -41,6 +43,33 @@ public class Test_121 {
             return 0;
         }
         return maxProfit;
+    }
+    @Test
+    public void test(){
+        Solution solution = new Solution();
+        solution.maxProfit(new int[]{7,1,5,3,6,4});
+
+    }
+
+    class Solution {
+        public int maxProfit(int[] prices) {
+            if (prices.length == 0) {
+                return 0;
+            }
+            int[] profit = new int[prices.length];
+            profit[0] = 0;
+            // 利润的数组
+            for (int i = 1; i < profit.length; i++) {
+                profit[i] = prices[i] - prices[i - 1];
+            }
+            int pre = profit[0];
+            int max = profit[0];
+            for (int i = 1; i < profit.length; i++) {
+                pre = Math.max(profit[i], pre + profit[i]);
+                max = Math.max(max, pre);
+            }
+            return max > 0 ? max : 0;
+        }
     }
 
 }

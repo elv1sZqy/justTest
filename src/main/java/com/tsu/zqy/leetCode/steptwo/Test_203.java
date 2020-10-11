@@ -2,8 +2,6 @@ package com.tsu.zqy.leetCode.steptwo;
 
 import com.tsu.zqy.leetCode.wrapper.ListNode;
 
-import java.util.List;
-
 /**
  * @author zhuQiYun
  * @create 2019/9/21
@@ -54,5 +52,29 @@ public class Test_203 {
             currentNode = next;
         }
         return head;
+    }
+
+
+    class Solution {
+        public ListNode removeElements(ListNode head, int val) {
+            // 遍历head, 遇到val就将他移除(前一个节点的next指向当前节点的后一个(如果后一个节点的值也是val, 递归向后))
+            if (head == null) {
+                return null;
+            }
+            // 保证首节点的值不是val
+            while (head.val == val) {
+                head = head.next;
+            }
+            ListNode currentNode = head;
+            while (currentNode != null) {
+                ListNode next = currentNode.next;
+                while (next!= null && next.val == val) {
+                    next = next.next;
+                }
+                currentNode.next = next;
+                currentNode = next;
+            }
+            return head;
+        }
     }
 }

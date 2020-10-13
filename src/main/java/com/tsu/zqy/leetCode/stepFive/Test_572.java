@@ -1,4 +1,4 @@
-package com.tsu.zqy.leetCode.five;
+package com.tsu.zqy.leetCode.stepFive;
 
 import com.tsu.zqy.leetCode.wrapper.TreeNode;
 import com.tsu.zqy.leetCode.wrapper.TreeNodeWrapper;

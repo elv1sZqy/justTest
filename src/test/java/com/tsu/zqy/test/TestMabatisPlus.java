@@ -5,12 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.tsu.zqy.redisAndMybatis.mybatisPlusTest.mapper.StudentMapper;
 import com.tsu.zqy.redisAndMybatis.pojo.Student;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import java.sql.Wrapper;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,7 +18,6 @@ import java.util.stream.Stream;
  * @Date 2019/5/28 14:29
  * @Description:
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestMabatisPlus {
 

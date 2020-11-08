@@ -57,7 +57,7 @@ public class Test_707 {
 
     }
 
-    public class ListNode {
+    private class ListNode {
         int val;
         ListNode next;
         ListNode prev;

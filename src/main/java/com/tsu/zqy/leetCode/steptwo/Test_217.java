@@ -1,6 +1,7 @@
 package com.tsu.zqy.leetCode.steptwo;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author zhuQiYun
@@ -34,13 +35,24 @@ public class Test_217 {
         System.out.println(new Test_217().containsDuplicate(nums));
     }
 
-    public boolean containsDuplicate(int[] nums) {
+    public boolean containsDuplicate2(int[] nums) {
         HashMap<Integer, int[]> map = new HashMap<>();
         for (int num : nums) {
             if (map.containsKey(num)){
                 return true;
             }
             map.put(num, nums);
+        }
+        return false;
+    }
+
+
+    public boolean containsDuplicate(int[] nums) {
+        Map<Integer, Object> map = new HashMap<>(nums.length);
+        for (int num : nums) {
+           if (null != map.put(num, this)) {
+               return true;
+           }
         }
         return false;
     }

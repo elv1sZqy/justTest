@@ -30,8 +30,10 @@ public class Test_122 {
      * 3.第一次的买入是之前的最小值, 卖出是最大值.
      * 4.以此类推
      */
-    public int maxProfit(int[] prices) {
-        if (prices == null || prices.length <= 1) return 0;
+    public int maxProfit1(int[] prices) {
+        if (prices == null || prices.length <= 1) {
+            return 0;
+        }
         // 总利润
         int maxProfit = 0;
         for (int i = 1; i < prices.length; i++) {
@@ -46,9 +48,16 @@ public class Test_122 {
         return maxProfit;
     }
 
+    /**
+     * 动态规划
+     * @param prices
+     * @return
+     */
     public int maxProfit2(int[] prices) {
         int length = prices.length;
-        if (prices == null || length <= 1) return 0;
+        if (prices == null || length <= 1) {
+            return 0;
+        }
         int[][] dp = new int[length][2];
         dp[0][0] = 0;
         dp[0][1] = -prices[0];
@@ -65,6 +74,23 @@ public class Test_122 {
         }
         MyCommonUtil.printTwoArrays(dp);
         return dp[length-1][0];
+    }
+
+    /**
+     * 贪心
+     * 从第二天开始, 当天的价格减去前一天的价格, 如果是整数,就利息就加上差值, 如果是负数,就继续循环
+     * @param prices
+     * @return
+     */
+    public int maxProfit(int[] prices) {
+        int sum = 0;
+        for (int i = 1; i < prices.length; i++) {
+            int accrual = prices[i] - prices[i - 1];
+            if (accrual > 0) {
+                sum+=accrual;
+            }
+        }
+        return sum;
     }
 
 

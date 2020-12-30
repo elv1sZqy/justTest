@@ -1,5 +1,7 @@
 package com.tsu.zqy.leetCode.stepSeven;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * @author zhuQiYun
  * @create 2020/12/28
@@ -29,32 +31,54 @@ package com.tsu.zqy.leetCode.stepSeven;
 public class Test_738 {
     public static void main(String[] args) {
         Test_738 test_738 = new Test_738();
-        System.out.println(test_738.monotoneIncreasingDigits(332));
+        System.out.println(test_738.monotoneIncreasingDigits(3327853));
     }
 
     /**
      * 贪心算法
-     * @param N
-     *  以98为例,  num[i-1]需要减一, num[i]改为9 ---> 89
-     *  以此类推, 局部解到全局解
+     *
+     * @param N 以98为例,  如果num[i-1] > num[i]   num[i-1]需要减一, num[i]改为9 ---> 89
+     *          以此类推, 局部解到全局解
+     *          用一个flag记录, 从那一位开始后面全是9
+     *
      * @return
      */
     public int monotoneIncreasingDigits(int N) {
-        String[] nums = (""+N).split("");
-        for (int i = nums.length - 1; i >= 0; i--) {
-
+        String[] nums = ("" + N).split("");
+        int flag = nums.length;
+        for (int i = nums.length - 1; i > 0; i--) {
+            int num = getNum(nums, i - 1);
+            if (getNum(nums, i) < num) {
+                nums[i - 1] = num - 1 + "";
+                flag = i;
+            }
         }
-        return 1;
+        for (int i = flag; i < nums.length; i++) {
+            nums[i] = "9";
+        }
+        return stringArrayToInteger(nums);
+    }
+
+    private int stringArrayToInteger(String[] nums) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < nums.length; i++) {
+            stringBuilder.append(nums[i]);
+        }
+        return Integer.parseInt(stringBuilder.toString());
+    }
+
+    private int getNum(String[] nums, int i) {
+        return Integer.parseInt(nums[i]);
     }
 
 
-        /**
-         * 暴力法
-         * 遍历小于等于当前的数, 然后判断这个数是不是递增的
-         *
-         * @param N
-         * @return
-         */
+    /**
+     * 暴力法
+     * 遍历小于等于当前的数, 然后判断这个数是不是递增的
+     *
+     * @param N
+     * @return
+     */
     public int monotoneIncreasingDigits1(int N) {
         for (int n = N; n > 0; n--) {
             if (isIncreas(n)) {

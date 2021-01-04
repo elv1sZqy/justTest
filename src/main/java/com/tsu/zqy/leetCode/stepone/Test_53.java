@@ -12,6 +12,12 @@ public class Test_53 {
         int sum = fun(nums);
         System.out.println(sum);
     }
+
+    /**
+     * 暴力
+     * @param nums
+     * @return
+     */
     public static int maxSubArray(int[] nums) {
 
         //记录最大数
@@ -32,20 +38,12 @@ public class Test_53 {
     }
 
 
-    public static int maxSubArray2(int[] nums) {
-        int ans = nums[0];
-        int sum = 0;
-        for(int num: nums) {
-            if(sum > 0) {
-                sum += num;
-            } else {
-                sum = num;
-            }
-            ans = Math.max(ans, sum);
-        }
-        return ans;
-    }
-
+    /**
+     * 贪心
+     * 如果前面几个数之和已经小于0, 那么放弃前面的和, 从当前数开始继续累积.
+     * @param nums
+     * @return
+     */
     public static int fun(int[] nums){
         int result = nums[0];
         int sum = 0;

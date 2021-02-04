@@ -15,24 +15,95 @@ public class ReverseString {
     // 4. 编写完整可运行的程序，包含测试示例验证，确保本地测试运行通过。
     // 示例:
     // "welcome to alibaba!" -> "!ABABali OT EMOCLEW"
-    // 这个有点问题...
-    // "ali all in, Ali ilA" -> "aLI ILa ,NI LLA ali"
+    // "ali all in, Ali ilA ali" -> "ali ALI ILA ,NI LLA ali"
     // "keep ali" -> "ali PEEK"
 
     public static void main(String[] args) {
-        System.out.println(reverse("ali all in, Ali ilA"));
+        System.out.println(reverse("ali all in, ali Ali ilA ali iiiiii"));
     }
 
     private static String specialWord = "ali";
 
+    private static String reverse(String str) {
+        char[] chars = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (int i = chars.length - 1; i >= 0; i--) {
+            if (isSpecialWord(i, chars)) {
+                replaceSpecialWord(sb);
+                i -= (specialWord.length() - 1);
+                continue;
+            }
+            char aChar = chars[i];
+            sb.append(changeCase(aChar));
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 在倒置的字符串中拼接上正序的特殊词
+     *
+     * @param sb
+     */
+    private static void replaceSpecialWord(StringBuilder sb) {
+        sb.append(specialWord);
+    }
+
+    public static String getResult(String str) {
+        String str2 = reverse2(str);
+        String[] arr = str2.split(" ");
+        String result = "";
+        for (int i = 0; i < arr.length; i++) {
+            result = result + toUpper(arr[i]) + " ";
+        }
+        return result;
+    }
+
+
+    public static String reverse2(String str) {
+        if (str == null || str.length() <= 1) {
+            return str;
+        }
+        return reverse2(str.substring(1)) + str.charAt(0);
+    }
+
+    public static String toUpper(String str) {
+        if (str.contains("ila")) {
+            return str.toUpperCase().replaceAll("ILA", "ali");
+        }
+
+        return str.toUpperCase();
+    }
+
+
+    /**
+     * 判断未来的几个char能组成指定的特殊单词
+     *
+     * @param currentIndex
+     * @param chars
+     * @return
+     */
+    private static boolean isSpecialWord(int currentIndex, char[] chars) {
+        char[] specialWordChars = specialWord.toCharArray();
+        for (int i = specialWord.length(); i > 0; i--) {
+            if (currentIndex < 0) {
+                return false;
+            }
+            if (currentIndex < 0 || specialWordChars[i - 1] != chars[currentIndex]) {
+                return false;
+            }
+            currentIndex--;
+        }
+        return true;
+    }
+
     /**
      * 1. 关键字为"ali"
-     * 2. 不仅要互换位置, 还要改变大小写
+     * 2. 不仅要互换位置
      *
      * @param str
      * @return 反转后的字符串
      */
-    public static String reverse(String str) {
+    public static String reverse1(String str) {
         char[] chars = str.toCharArray();
         int length = str.length();
         int right = length - 1;
@@ -61,7 +132,7 @@ public class ReverseString {
         return String.valueOf(chars);
     }
 
-    private static boolean isSpecialWord(int left, int right, char[] chars) {
+    /*private static boolean isSpecialWord(int left, int right, char[] chars) {
         boolean leftIsSpecialWord = true;
         boolean rightIsSpecialWord = true;
         int length = specialWord.length();
@@ -81,7 +152,7 @@ public class ReverseString {
         }
 
         return rightIsSpecialWord || leftIsSpecialWord;
-    }
+    }*/
 
     /**
      * 1. A + 32 = a  A = 65
@@ -91,11 +162,11 @@ public class ReverseString {
      * @return
      */
     private static char changeCase(char achar) {
-        // 转小写
+/*        // 转小写
         if (achar >= 'A' && achar <= 'Z') {
             achar += 32;
             return achar;
-        }
+        }*/
         // 转大写
         if (achar >= 'a' && achar <= 'z') {
             achar -= 32;

@@ -68,7 +68,7 @@ public class Test1 {
                 //temp表示当前面额可取的个数
                 int temp = amount / coins[i];
                 count += temp;
-                amount = amount %coins[i];
+                amount %= coins[i];
             }
         }
 

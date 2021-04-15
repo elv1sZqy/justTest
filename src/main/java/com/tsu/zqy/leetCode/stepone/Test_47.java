@@ -14,7 +14,7 @@ import java.util.Set;
 public class Test_47 {
     public static void main(String[] args) {
         Test_47 test_46 = new Test_47();
-        System.out.println(test_46.permute(new int[]{1,1, 2}));
+        System.out.println(test_46.permute(new int[]{1,3, 2}));
     }
 
     Set<List<Integer>> ans = new HashSet<>();

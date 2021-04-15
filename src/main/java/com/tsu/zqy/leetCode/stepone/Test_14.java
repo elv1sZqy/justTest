@@ -12,9 +12,31 @@ package com.tsu.zqy.leetCode.stepone;
  */
 public class Test_14 {
     public static void main(String[] args){
-        String[] strs = {"c","c"};
-        String s = solution(strs);
+        String[] strs = {"flower","flow","flight"};
+        String s = longestCommonPrefix(strs);
         System.out.println(s);
+    }
+
+    public static String longestCommonPrefix(String[] strs) {
+        int length = strs.length;
+        if (length == 0) {
+            return "";
+        }
+        String str = strs[0];
+        if (length == 1) {
+            return str;
+        }
+        char[] chars = str.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char currentChar = chars[i];
+            for (int j = 1; j < strs.length; j++) {
+                String tempStr = strs[j];
+                if (i > tempStr.length() - 1 || currentChar != tempStr.charAt(i)) {
+                    return str.substring(0, i);
+                }
+            }
+        }
+        return str;
     }
 
     private static String solution(String[] strs) {

@@ -32,12 +32,6 @@ import java.util.HashMap;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Test_13 {
-    public static void main(String[] args){
-        String x = "XXVII";
-        int result = solution(x);
-        System.out.println(result);
-    }
-
     /**
      * 百度找的条件:
      * 相同的数字连写，所表示的数等于这些数字相加得到的数，如 Ⅲ=3；
@@ -120,5 +114,26 @@ public class Test_13 {
         return result;
     }
 
+    public static void main(String[] args){
+        String x = "III";
+        int result = romanToInt(x);
+        System.out.println(result);
+    }
 
+    //几个特殊值 的数字
+    static int nums[] = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    //几个特殊值的字符串形式
+    static String[] strs = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+
+    public static int romanToInt(String s) {
+        int result = 0;
+        for (int i = 0; i < strs.length; i++) {
+            String str = strs[i];
+            while (s.startsWith(str)) {
+                result += nums[i];
+                s = s.replaceFirst(str, "");
+            }
+        }
+        return result;
+    }
 }

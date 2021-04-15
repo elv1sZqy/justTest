@@ -1,5 +1,7 @@
 package com.tsu.zqy.leetCode.stepone;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @ClassName Reverse_7
  * @Author Elv1s
@@ -13,12 +15,48 @@ public class Reverse_7 {
         System.out.println(reverse);
     }
 
-    /**
-     * !!!!溢出就返回0
-     * @param x
-     * @return
-     */
     public static int reverse(int x) {
+        //1.返回值
+        int result = 0;
+
+        //2.特殊情况  -9 到 9  返回值都是本身
+        if (x <= 9 && x >= -9) {
+            return x;
+        }
+        if (x > 0) {
+            String str = reverseString(Integer.toString(x));
+            return integerValueOfString(str);
+        }
+        String str = reverseString(Integer.toString(x).substring(1));
+        return -integerValueOfString(str);
+    }
+
+    @NotNull
+    private static Integer integerValueOfString(String str) {
+        try {
+            return Integer.valueOf(str);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private static String reverseString(String str) {
+        char[] chars = str.toCharArray();
+        int length = chars.length;
+        for (int i = 0; i < length / 2; i++) {
+            char tempChar = chars[i];
+            chars[i] = chars[length - 1 - i];
+            chars[length - 1 - i] = tempChar;
+        }
+        return String.valueOf(chars);
+    }
+
+    /**
+         * !!!!溢出就返回0
+         * @param x
+         * @return
+         */
+    public static int reverse2(int x) {
         //1.返回值
         int result = 0;
 

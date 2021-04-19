@@ -28,7 +28,6 @@
         <mybatis.paginator.version>1.2.15</mybatis.paginator.version>
         <mysql.version>5.1.32</mysql.version>
         <slf4j.version>1.6.4</slf4j.version>
-        <jackson.version>2.4.2</jackson.version>
         <druid.version>1.0.16</druid.version>
         <jstl.version>1.2</jstl.version>
         <servlet-api.version>2.5</servlet-api.version>
@@ -318,6 +317,21 @@
              <artifactId>phantomjsdriver</artifactId>
              <version>1.4.4</version>
          </dependency>-->
+
+        <!-- log -->
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+            <!-- <scope>test</scope> -->
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,8 +1,5 @@
 package com.tsu.zqy.leetCode.stepone;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author zhuQiYun
  * @create 2021/1/4
@@ -10,6 +7,10 @@ import java.util.List;
  */
 public class Test_55 {
     public static void main(String[] args) {
+        int a = 'a';
+        System.out.println(a);
+        a = 'A';
+        System.out.println(a);
         new Test_55().canJump(new int[]{3,2,1,0,4});
     }
 

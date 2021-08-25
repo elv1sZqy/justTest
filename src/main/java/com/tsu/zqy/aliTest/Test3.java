@@ -98,4 +98,24 @@ class PrintALi {
             lock.unlock();
         }
     }
+
+
+
+    private void printD() {
+        lock.lock();
+        try {
+            while (true) {
+                if (4 != flag) {
+                    lockA.await();
+                }
+                System.out.println("D");
+                flag = 2;
+                lockL.signal();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+    }
 }

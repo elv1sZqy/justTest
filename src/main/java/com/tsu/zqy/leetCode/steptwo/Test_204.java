@@ -1,10 +1,6 @@
 package com.tsu.zqy.leetCode.steptwo;
 
-import javafx.beans.binding.ObjectExpression;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -17,28 +13,28 @@ import java.util.Map;
 public class Test_204 {
 
     public static void main(String[] args) {
-        new Test_204().countPrimes(20);
+        System.out.println(new Test_204().countPrimes(499979));
     }
 
 
-    public int countPrimes(int n) {
-        if (n < 2){
+    public int countPrimes1(int n) {
+        if (n < 2) {
             return 0;
         }
         Map<Integer, Object> map = new HashMap<>();
         Object o = new Object();
-        int[] arr = new int[n-2];
+        int[] arr = new int[n - 2];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = i + 2;
         }
         for (int i = 0; i < arr.length; i++) {
             int num = arr[i];
-            if (!map.containsKey(num)){
-                map.put(num,o);
+            if (!map.containsKey(num)) {
+                map.put(num, o);
             }
-            for (int i1 = i+1; i1 < arr.length; i1++) {
+            for (int i1 = i + 1; i1 < arr.length; i1++) {
                 // 是i的倍数
-                if (arr[i1] % num == 0){
+                if (arr[i1] % num == 0) {
                     arr[i1] = num;
                 }
             }
@@ -46,5 +42,29 @@ public class Test_204 {
 
         return map.size();
     }
+
+    public int countPrimes(int n) {
+        if (n <= 1) {
+            return 0;
+        }
+        boolean[] arr = new boolean[n];
+        int count = 0;
+
+        for (int i = 2; i < n; i++) {
+            if (arr[i]) {
+                continue;
+            }
+            count++;
+            for (int j = i; j < n; j += i) {
+                if (j > 0 && j < n) {
+                    arr[j] = true;
+                } else {
+                    continue;
+                }
+            }
+        }
+        return count;
+    }
+
 
 }

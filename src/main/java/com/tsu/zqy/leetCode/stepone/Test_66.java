@@ -1,5 +1,7 @@
 package com.tsu.zqy.leetCode.stepone;
 
+import java.util.Arrays;
+
 /**
  * @ClassName Test_66
  * @Author Elv1s
@@ -17,21 +19,45 @@ package com.tsu.zqy.leetCode.stepone;
  */
 public class Test_66 {
     public static void main(String[] args) {
-        int[] nums = {9,9,9};
+//        int[] nums = {0};
+        int[] nums = {9, 9, 9};
         int[] ints = plusOne(nums);
         for (int i = 0; i < ints.length; i++) {
             System.out.println(ints[i]);
         }
     }
 
-    public static int[] plusOne(int[] digits) {
+    private static int[] plusOne(int[] nums) {
+        int carry = 1;
+        int length = nums.length;
+        int index = length - 1;
+        while (carry > 0 && index >= 0) {
+            int num = nums[index] + carry;
+            nums[index] = num % 10;
+            carry = num / 10;
+            index--;
+        }
+
+        if (carry > 0) {
+            int[] ints = new int[length + 1];
+            ints[0] = 1;
+            for (int i = 0; i < nums.length; i++) {
+                ints[1 + i] = nums[i];
+            }
+            return ints;
+        }
+
+        return nums;
+    }
+
+    public static int[] plusOne2(int[] digits) {
         //当前指针的位置
         int currenIndex = digits.length - 1;
         //临时值
         int temp = digits[currenIndex];
 
-        if ((digits[currenIndex] + 1) < 10){
-            digits[currenIndex]  += 1;
+        if ((digits[currenIndex] + 1) < 10) {
+            digits[currenIndex] += 1;
             return digits;
         }
 
@@ -39,17 +65,16 @@ public class Test_66 {
             //满十进一
             digits[currenIndex] = 0;
 
-            if (currenIndex -1 < 0){
+            if (currenIndex - 1 < 0) {
                 //进位不足了   就新建一个数组
                 int[] ints = new int[digits.length + 1];
                 //第一位一定是1
                 ints[0] = 1;
                 for (int i = 0; i < digits.length; i++) {
-                    ints[i+1] = digits[i];
+                    ints[i + 1] = digits[i];
                 }
                 return ints;
-            }
-            else {
+            } else {
                 temp = digits[currenIndex - 1];
                 digits[currenIndex - 1] += 1;
                 currenIndex--;

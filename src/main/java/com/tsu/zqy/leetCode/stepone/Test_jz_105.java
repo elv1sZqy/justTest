@@ -38,34 +38,67 @@ package com.tsu.zqy.leetCode.stepone;
  */
 public class Test_jz_105 {
 
+//    public int maxAreaOfIsland(int[][] grid) {
+//        int N = grid.length;
+//        int M = grid[0].length;
+//        int maxArea = 0;
+//        for (int i = 0; i < N; i++) {
+//            for (int j = 0; j < M; j++) {
+//                if (grid[i][j] == 1) {
+//                    maxArea = Math.max(maxArea, infect(i, j, grid, N, M));
+//                }
+//            }
+//        }
+//        return maxArea;
+//    }
+//
+//
+//    private int infect(int i, int j, int[][] grid, int N, int M) {
+//        if (i < 0 || i >= N ||
+//                j < 0 || j >= M ||
+//                grid[i][j] != 1) {
+//            return 0;
+//        }
+//        grid[i][j] = 2;
+//        return 1
+//                + infect(i - 1, j, grid, N, M)
+//                + infect(i + 1, j, grid, N, M)
+//                + infect(i, j - 1, grid, N, M)
+//                + infect(i, j + 1, grid, N, M)
+//                ;
+//    }
+
+
     public int maxAreaOfIsland(int[][] grid) {
-        int N = grid.length;
-        int M = grid[0].length;
-        int maxArea = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 1) {
-                    maxArea = Math.max(maxArea, infect(i, j, grid, N, M));
+                    max = Math.max(max, infect(grid, i, j, grid.length, grid[i].length));
                 }
             }
         }
-        return maxArea;
+
+        return max;
     }
 
-
-    private int infect(int i, int j, int[][] grid, int N, int M) {
-        if (i < 0 || i >= N ||
-                j < 0 || j >= M ||
-                grid[i][j] != 1) {
+    private int infect(int[][] grid, int i, int j, int X, int Y) {
+        if (i > X - 1 || j > Y - 1 || i < 0 || j < 0) {
+            return 0;
+        }
+        if (grid[i][j] != 1) {
             return 0;
         }
         grid[i][j] = 2;
-        return 1
-                + infect(i - 1, j, grid, N, M)
-                + infect(i + 1, j, grid, N, M)
-                + infect(i, j - 1, grid, N, M)
-                + infect(i, j + 1, grid, N, M)
-                ;
+        return 1 +
+                // 右
+                infect(grid, i + 1, j, X, Y) +
+                // 下
+                infect(grid, i, j + 1, X, Y) +
+                // 上
+                infect(grid, i, j - 1, X, Y) +
+                // 左
+                infect(grid, i - 1, j, X, Y);
     }
 
 }

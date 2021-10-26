@@ -55,7 +55,7 @@ public class Test_134 {
 
     public static void main(String[] args) {
         Test_134 test_134 = new Test_134();
-        int[] ints = {2, 3, 4};
+        int[] ints = {1,2,3,4,5};
         int[] ints2 = {3, 4, 3};
         System.out.println(test_134.canCompleteCircuit(ints, ints2));
     }

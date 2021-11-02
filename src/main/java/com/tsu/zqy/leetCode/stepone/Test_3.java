@@ -34,9 +34,24 @@ import java.util.Map;
 public class Test_3 {
     @Test
     public void test() {
-        Solution solution = new Solution();
-        System.out.println(solution.lengthOfLongestSubstring("abba"));
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+    }
 
+    public int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        int max = 0;
+        int startIndex = 0;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char aChar = chars[i];
+            if (map.getOrDefault(aChar, -1) >= startIndex) {
+                Integer index = map.get(aChar);
+                startIndex = ++index;
+            }
+            max = Math.max(max, i - startIndex + 1);
+            map.put(aChar, i);
+        }
+        return max;
     }
 
     public static void main(String[] args) {
@@ -69,7 +84,7 @@ public class Test_3 {
             return Math.max(max, end - start);
         }
 
-        public int lengthOfLongestSubstring(String s) {
+        public int lengthOfLongestSubstring2(String s) {
             int length = s.length();
             if (length == 0 || length == 1) {
                 return length;
@@ -86,7 +101,7 @@ public class Test_3 {
                     if (oldIndex >= start) {
                         start = oldIndex + 1;
                     }
-                    cache.put(currentChar , end);
+                    cache.put(currentChar, end);
                     continue;
                 }
                 cache.put(currentChar, end);

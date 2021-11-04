@@ -23,18 +23,30 @@ package com.tsu.zqy.leetCode.stepthree;
 public class Test_367 {
 
     public static void main(String[] args) {
-        System.out.println(new Test_367().isPerfectSquare(32));
+        System.out.println(new Test_367().isPerfectSquare(9));
     }
 
     public boolean isPerfectSquare(int num) {
-       if (num == 1) {
-           return true;
-       }
-       int temp = 1;
-       while (0 < num) {
-           num -= temp;
-           temp += 2;
-       }
-       return num == 0;
+        int temp = 1;
+        while (temp < num) {
+            if (temp * temp == num) {
+                return true;
+            }
+            temp++;
+        }
+        return false;
+    }
+
+
+    public boolean isPerfectSquare1(int num) {
+        if (num == 1) {
+            return true;
+        }
+        int temp = 1;
+        while (0 < num) {
+            num -= temp;
+            temp += 2;
+        }
+        return num == 0;
     }
 }

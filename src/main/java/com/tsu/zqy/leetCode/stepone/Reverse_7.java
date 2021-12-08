@@ -15,6 +15,20 @@ public class Reverse_7 {
         System.out.println(reverse);
     }
 
+    public int reverse3(int x) {
+        int result = 0;
+        while (x != 0) {
+            if (result < Integer.MIN_VALUE * 10 || result > Integer.MAX_VALUE / 10) {
+                return 0;
+            }
+            // 取到最低位的值
+            int currentNum = x % 10;
+            x /= 10;
+            result = 10 * result + currentNum;
+        }
+        return result;
+    }
+
     public static int reverse(int x) {
         //1.返回值
         int result = 0;
@@ -52,10 +66,11 @@ public class Reverse_7 {
     }
 
     /**
-         * !!!!溢出就返回0
-         * @param x
-         * @return
-         */
+     * !!!!溢出就返回0
+     *
+     * @param x
+     * @return
+     */
     public static int reverse2(int x) {
         //1.返回值
         int result = 0;
@@ -70,7 +85,7 @@ public class Reverse_7 {
         char[] nums = (x + "").toCharArray();
 
         //3.1大于零的情况
-        if (x > 0){
+        if (x > 0) {
             //临时接受的数组
             char[] temp = new char[nums.length];
             for (int i = 0; i < nums.length; i++) {
@@ -86,7 +101,7 @@ public class Reverse_7 {
         //3.2小于零
         else {
             //因为负数多了一个符号
-            char[] temp = new char[nums.length -1];
+            char[] temp = new char[nums.length - 1];
             for (int i = 0; i < nums.length - 1; i++) {
                 //倒置字符数组
                 temp[temp.length - 1 - i] = nums[i + 1];
@@ -97,7 +112,7 @@ public class Reverse_7 {
                 return 0;
             }
         }
-            return result;
+        return result;
     }
 
 }
